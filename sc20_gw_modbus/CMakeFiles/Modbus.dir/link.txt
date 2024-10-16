@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/Modbus.dir/src/main.cpp.o CMakeFiles/Modbus.dir/src/bts_debug.cpp.o CMakeFiles/Modbus.dir/src/bts_modbus.cpp.o CMakeFiles/Modbus.dir/src/bts_json.cpp.o CMakeFiles/Modbus.dir/src/bts_mqtt.cpp.o -o Modbus  -lmodbus -lmosquitto -ljsoncpp 

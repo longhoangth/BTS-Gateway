@@ -1,0 +1,18 @@
+Start Consul:
+	nohup consul agent -ui -bootstrap -server -client 0.0.0.0 -data-dir=tmp/consul &
+
+Start Core Metadata:
+	cd edgex-go/cmd/core-metadata/
+	nohup ./core-metadata -cp=consul.http://localhost:8500 -registry &
+
+
+
+
+Ping:
+	curl http://localhost:59880/api/v2/ping
+	curl http://localhost:59881/api/v2/ping
+	
+Event Count:
+	curl http://localhost:59880/api/v2/event/count
+
+

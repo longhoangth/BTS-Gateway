@@ -1,0 +1,54 @@
+[
+    {
+        "apiVersion": "v2",
+        "profile": {
+            "name": "Sensor_Cluster",
+            "manufacturer": "Lab",
+            "model": "LAB-01",
+            "labels": [
+                "modbus",
+                "environment",
+                "temperature"
+            ],
+            "description": "Sensor cluster providing metrics for temperature and humidity",
+            "deviceResources": [
+                {
+                    "name": "temperature",
+                    "description": "Ambient temperature in Celsius",
+                    "properties": {
+                        "valueType": "Int64",
+                        "readWrite": "RW",
+                        "minimum": "-50",
+                        "maximum": "100",
+                        "defaultValue": "0",
+                        "units": "degreesCelsius"
+                    }
+                },
+                {
+                    "name": "humidity",
+                    "description": "Ambient humidity in percent",
+                    "properties": {
+                        "valueType": "Int8",
+                        "readWrite": "RW",
+                        "minimum": "0",
+                        "maximum": "100",
+                        "defaultValue": "0",
+                        "units": "percentage"
+                    }
+                }
+            ],
+            "deviceCommands": [
+                {
+                    "name": "Switch",
+                    "readWrite": "RW",
+                    "resourceOperations": [
+                        {
+                            "deviceResource": "SwitchButton",
+                            "DefaultValue": "false"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+]

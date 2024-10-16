@@ -1,0 +1,8 @@
+[
+{
+  "directory": "W:/SC20/Test_EdgeX/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IW:/SC20/Test_EdgeX/include -g -std=gnu++11 -o CMakeFiles\\http_excecutable.dir\\src\\http.cpp.obj -c W:\\SC20\\Test_EdgeX\\src\\http.cpp",
+  "file": "W:\\SC20\\Test_EdgeX\\src\\http.cpp",
+  "output": "CMakeFiles\\http_excecutable.dir\\src\\http.cpp.obj"
+}
+]

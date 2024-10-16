@@ -1,0 +1,23 @@
+1. 	Create new sensor/device
+	Creating, or registering, a device in EdgeX Foundry is required for EdgeX to:
+		● Become aware of the existence of the device
+		● Be able to receive data from the device
+		● Be able to send commands to the device (if it supports commands)
+		● Understand what type of data the device will generate
+		● Understand how and in what format the device sends data / receives commands. For example:
+			○ What protocol is used?
+			○ What types of data is supported (temp, humidity, vibrations/sec, etc.)?
+			○ What format does the data come in (Int64, Str, etc.)?
+			
+	1. 1. Device profiles
+		The sensor cluster, which will be generating temperature and humidity data, will be created
+	using Postman with the following steps:
+		● Create value descriptors (optional)
+		● Upload the device profile
+		● Create the device
+	Each step will include the same IP address - that of the host, and a port number. The port
+	number determines which microservice is targeted with each command. For example:
+		● 59880: edgex-core-data (optional)
+		● 59881: edgex-core-metadata
+		● 59882: edgex-core-command
+	

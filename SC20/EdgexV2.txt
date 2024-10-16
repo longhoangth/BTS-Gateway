@@ -1,0 +1,57 @@
+Start Consul:
+	nohup consul agent -ui -bootstrap -server -client 0.0.0.0 -data-dir=tmp/consul &
+
+Start Core Metadata:
+	cd edgex-go/cmd/core-metadata/
+	nohup ./core-metadata -cp=consul.http://0.0.0.0:8500 -registry &
+
+Start the other Core and Supporting Services:
+	cd ../core-data
+	nohup ./core-data -cp=consul.http://0.0.0.0:8500 -registry &
+	cd ../core-command
+	nohup ./core-command -cp=consul.http://0.0.0.0:8500 -registry &
+	cd ../support-notifications/
+	nohup ./support-notifications -cp=consul.http://0.0.0.0:8500 -registry &
+	cd ../support-scheduler/
+	nohup ./support-scheduler -cp=consul.http://0.0.0.0:8500 -registry &
+
+Start Configurable Application Service:
+	nohup ./app-service-configurable -cp=consul.http://0.0.0.0:8500 -registry -p=rules-engine &
+
+Start the Virtual Device Service:
+	nohup ./device-virtual -cp=consul.http://0.0.0.0:8500 -registry &
+
+Start the GUI:
+	nohup ./edgex-ui-server &
+
+Start eKuiper:
+	Set eKuiper Environment Variables
+		export CONNECTION__EDGEX__REDISMSGBUS__PORT=6379
+		export CONNECTION__EDGEX__REDISMSGBUS__PROTOCOL=redis
+		export CONNECTION__EDGEX__REDISMSGBUS__SERVER=0.0.0.0
+		export CONNECTION__EDGEX__REDISMSGBUS__TYPE=redis
+		export EDGEX__DEFAULT__PORT=6379
+		export EDGEX__DEFAULT__PROTOCOL=redis
+		export EDGEX__DEFAULT__SERVER=0.0.0.0
+		export EDGEX__DEFAULT__TOPIC=rules-events
+		export EDGEX__DEFAULT__TYPE=redis
+		export KUIPER__BASIC__CONSOLELOG="true"
+		export KUIPER__BASIC__RESTPORT=59720
+	
+	Run eKuiper
+		nohup ./bin/kuiperd &
+
+
+
+Ping:
+	Core-Data:
+		curl http://0.0.0.0:59880/api/v2/ping
+	Core-Metadata:
+		curl http://0.0.0.0:59881/api/v2/ping
+	Core-Command:
+		curl http://0.0.0.0:59882/api/v2/ping
+	
+Event Count:
+	curl http://0.0.0.0:59880/api/v2/event/count
+
+	

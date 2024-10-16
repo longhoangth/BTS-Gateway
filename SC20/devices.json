@@ -1,0 +1,39 @@
+[
+    {
+        "apiVersion": "v2",
+        "device": {
+            "name": "Temp_and_Humidity_sensor_cluster_01",
+            "description": "Sensor cluster providing metrics for temperature and humidity",
+            "adminState": "UNLOCKED",
+            "operatingState": "UP",
+            "labels": [
+                "Humidity sensor",
+                "Temperature sensor",
+                "Lab-01"
+            ],
+            "location": "Lab",
+            "serviceName": "device-rest",
+            "profileName": "Sensor_Cluster",
+            "autoEvents": [
+                {
+                    "interval": "300ms",
+                    "onChange": true,
+                    "sourceName": "humidity"
+                },
+                {
+                    "interval": "300ms",
+                    "onChange": true,
+                    "sourceName": "temperature"
+                }
+            ],
+            "protocols": {
+                "modbus-tcp": {
+                    "Address": "localhost",
+                    "Port": "502",
+                    "UnitID": "1"
+                }
+            },
+            "notify": false
+        }
+    }
+]
